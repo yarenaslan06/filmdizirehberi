@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film & Dizi Rehberi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🎬 Film & Dizi Rehberi</h1>
+
+<input type="text" id="arama" placeholder="🔍 Film veya dizi ara..." onkeyup="ara()">
+
+    <h2>Kategoriler</h2>
+
+    <button>Tümü</button>
+    <button>Aksiyon</button>
+    <button>Komedi</button>
+    <button>Dram</button>
+    <button>Korku</button>
+
+    <h2>Popüler Filmler</h2>
+<div class="kart" data-tur="Aksiyon">
+    <img src="film2.jpg" alt="Film 1">
+    <h3>Film 1</h3>
+    <p>⭐ 8.5/10</p>
+    <p>Aksiyon • 2026</p>
+</div>
+
+<div class="kart" data-tur="Komedi">
+    <img src="film3.jpg" alt="Film 2">
+    <h3>Film 2</h3>
+    <p>⭐ 8.1/10</p>
+    <p>Komedi • 2025</p>
+</div>
+
+<div class="kart" data-tur="Dram">
+    <img src="film4.jpg" alt="Film 3">
+    <h3>Film 3</h3>
+    <p>⭐ 7.9/10</p>
+    <p>Dram • 2026</p>
+</div>
+
+  <h2 id="filmler">Popüler Filmler</h2>
+
+<div class="kart" data-tur="Dram">
+    <img src="dizi1.jpg" alt="Dizi 1">
+    <h3>Dizi 1</h3>
+    <p>⭐ 9.0/10</p>
+    <p>Dram • 2026</p>
+</div>
+
+<div class="kart" data-tur="Aksiyon">
+    <img src="dizi2.jpg" alt="Dizi 2">
+    <h3>Dizi 2</h3>
+    <p>⭐ 8.7/10</p>
+    <p>Aksiyon • 2025</p>
+</div>
+
+<div class="kart" data-tur="Komedi">
+    <img src="dizi3.jpg" alt="Dizi 3">
+    <h3>Dizi 3</h3>
+    <p>⭐ 8.3/10</p>
+    <p>Komedi • 2026</p>
+</div>
+
+ <h2>Türler</h2>
+
+<button onclick="filtrele('Tümü')">Tümü</button>
+<button onclick="filtrele('Aksiyon')">Aksiyon</button>
+<button onclick="filtrele('Komedi')">Komedi</button>
+<button onclick="filtrele('Dram')">Dram</button>
+<button onclick="filtrele('Korku')">Korku</button>
+<button onclick="filtrele('Bilim Kurgu')">Bilim Kurgu</button>
+
+<hr>
+
+   <hr>
+
+<p>
+    <a href="index.html">Ana Sayfa</a> |
+    <a href="#filmler">Filmler</a> |
+    <a href="#diziler">Diziler</a>
+</p>
+
+<script>
+function filtrele(tur) {
+    const kartlar = document.querySelectorAll(".kart");
+
+    kartlar.forEach(function(kart) {
+        if (tur == "Tümü" || kart.getAttribute("data-tur") == tur) {
+            kart.style.display = "inline-block";
+        } else {
+            kart.style.display = "none";
+        }
+    });
+}
+</script>
+<script>
+function ara() {
+    var kelime = document.getElementById("arama").value.toLowerCase();
+    var kartlar = document.querySelectorAll(".kart");
+
+    for (var i = 0; i < kartlar.length; i++) {
+        var baslik = kartlar[i].getElementsByTagName("h3")[0].innerHTML.toLowerCase();
+
+        if (baslik.indexOf(kelime) != -1) {
+            kartlar[i].style.display = "inline-block";
+        } else {
+            kartlar[i].style.display = "none";
+        }
+    }
+}
+</script>
+</body>
+</html>
